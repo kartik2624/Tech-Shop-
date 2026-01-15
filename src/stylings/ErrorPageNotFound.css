@@ -1,0 +1,42 @@
+.error-container {
+  height: 100vh;
+  background: linear-gradient(135deg, #000000, #1a1a1a);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.error-code {
+  font-size: 120px;
+  font-weight: bold;
+  color: #dc3545; /* bootstrap danger red */
+  margin: 0;
+}
+
+.error-title {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.error-text {
+  font-size: 18px;
+  color: #ccc;
+  margin-bottom: 25px;
+}
+
+.home-btn {
+  padding: 10px 25px;
+  border: 2px solid #dc3545;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.home-btn:hover {
+  background-color: #dc3545;
+  color: white;
+}

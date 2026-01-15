@@ -1,0 +1,135 @@
+.pd-page {
+  background-color: #0f0f0f;
+  min-height: 100vh;
+  color: white;
+  padding: 30px;
+}
+
+.pd-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+/* LEFT */
+.pd-left {
+  display: flex;
+  gap: 20px;
+}
+
+.pd-thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.pd-thumbnails img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border: 1px solid #444;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.pd-main-image {
+  background-color:#0f0f0f;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.pd-main-image img {
+  width: 450px;
+  height: 450px;
+  object-fit: contain;
+}
+
+/* RIGHT */
+.pd-right{
+  width: 400px;
+}
+.pd-info {
+  color: #bbb;
+  margin: 10px 0;
+}
+
+.pd-rating {
+  margin: 10px 0;
+  color: #ff5252;
+}
+
+.pd-rating span {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.pd-price {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.pd-price span {
+  text-decoration: line-through;
+  font-size: 16px;
+  color: gray;
+}
+
+.pd-save {
+  color: #00c853;
+}
+
+.pd-cart-btn {
+  margin-top: 10px;
+  padding: 12px;
+  width: 200px;
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+.taxes{
+  color: #aaa;
+}
+.in-stock{
+  align-self: center;
+}
+.price-cont1{
+  display: flex;
+  justify-content: space-between;
+}
+
+/* specifications css  */
+.specications{
+  display: flex;
+  /* justify-content: flex-start; */
+  width: 350px;
+
+}
+.property{
+  justify-self: start;
+  width: 175px;
+  color: #aaa;
+
+}
+.value{
+  justify-self: end;
+  width: 175px;
+}
+
+/* Review section css part */
+.comment-person{
+  display: flex;
+}
+.person-icon{
+  width: 45px;
+  height: 45px;
+  margin-right: 7px;
+  color: gray;
+}
+.person-photo{
+  align-self: center;
+}
+.person-name{
+  align-self: center;
+}
