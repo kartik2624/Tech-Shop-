@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import productsData from "../data/productsData";
 import "../stylings/ImageSlide.css";
+import { Link } from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -29,10 +30,10 @@ const HeroSlider = () => {
             {heroProducts.map((product) => (
                 <SwiperSlide key={product.id}>
                     <div
-                        className="hero-slide"
+                        className="hero-slide bg-dark"
                         style={{
                             backgroundImage: `url(${product.heroImage})`,
-                            backgroundColor: "#212529",
+                            // backgroundColor: "#212529",
 
 
             }}
@@ -47,8 +48,9 @@ const HeroSlider = () => {
                         <p className="price">
                             ₹{product.finalPrice} <del>₹{product.originalPrice}</del>
                         </p>
-
-                        <button className="btn btn-danger">Shop Now</button>
+                        <Link to={`/product/${product.id}`}>
+                            <button className="btn btn-danger">Shop Now</button>
+                        </Link>
                     </div>
                 </div>
         </SwiperSlide>

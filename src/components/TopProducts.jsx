@@ -83,7 +83,7 @@ const TopProducts = () => {
                     }
                     <div className="col-lg-3 col-md-4 col-sm-6">
                         <div className="card h-100 bg-dark text-white border-white d-flex justify-content-center align-items-center">
-                            <Link to="/" className="browse-all">Browse All <br />Products
+                            <Link to="/allproducts" className="browse-all">Browse All <br />Products
                                 <FaArrowRightLong className="arrow" />
                             </Link>
 
