@@ -7,6 +7,7 @@ import ImageSlider from '../components/ImageSlider'
 import Home from '../Home'
 import ErrorPageNotFound from '../components/ErrorPageNotFound'
 import AllProducts from '../components/AllProducts'
+import Cart from '../components/Cart'
 
 
 const Routing = () => {
@@ -18,6 +19,9 @@ const Routing = () => {
         <Route path='/' element={<Home />} />
         <Route path='/product/:id' element={<ProductDetails />} />
         <Route path='/allproducts' element={<AllProducts />} />
+        <Route path='/cart' element={<Cart />} />
+
+
         <Route path='/*' element={<ErrorPageNotFound />} />
 
     </Routes>

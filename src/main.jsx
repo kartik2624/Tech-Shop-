@@ -7,13 +7,17 @@ import "bootstrap/dist/js/bootstrap.bundle.js"
 import { BrowserRouter } from 'react-router-dom'
 import "swiper/css";
 import "swiper/css/autoplay";
+import { Provider } from 'react-redux'
+import store from './Redux/store.js'
 // import { BrowserRouter } from 'react-router-dom'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
+    <Provider store={store}>
       <App />
+    </Provider>
     </BrowserRouter>
   </StrictMode>,
 )

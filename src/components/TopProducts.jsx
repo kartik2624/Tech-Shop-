@@ -4,10 +4,14 @@ import { Link } from "react-router-dom";
 import "../stylings/navbar.css";
 import { categoryMenu } from "../data/filterBarData";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../Redux/cartSlide";
+
 
 const TopProducts = () => {
     const [userData, setUserData] = useState([]);
     const [category, setCategory] = useState("all")
+    const dispatch = useDispatch()
 
     useEffect(() => {
         setUserData(productsData);
@@ -20,6 +24,9 @@ const TopProducts = () => {
                 (item) => item.category.toLowerCase() === category
             );
 
+    const add = (data) =>{
+        dispatch(addToCart(data))
+    }
 
 
     return (
@@ -73,7 +80,7 @@ const TopProducts = () => {
                                         <h5 className="card-title">{data.title}</h5>
                                         <p className="card-text border-bottom pb-3">{data.info}</p>
                                         <p className="fw-bold text-center"> ₹{data.finalPrice} <del> ₹{data.originalPrice}</del></p>
-                                        <button className="btn btn-danger mt-auto">
+                                        <button className="btn btn-danger mt-auto" onClick={()=>add(data)}>
                                             Add to Cart
                                         </button>
                                     </div>
