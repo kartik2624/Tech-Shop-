@@ -20,8 +20,6 @@ const Routing = () => {
         <Route path='/product/:id' element={<ProductDetails />} />
         <Route path='/allproducts' element={<AllProducts />} />
         <Route path='/cart' element={<Cart />} />
-
-
         <Route path='/*' element={<ErrorPageNotFound />} />
 
     </Routes>

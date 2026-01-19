@@ -5,6 +5,8 @@ import "../stylings/productDetail.css";
 import { FaCheck } from "react-icons/fa6";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../Redux/cartSlide";
 
 import reviewsData from "../data/reviewsData";
 
@@ -12,6 +14,7 @@ import reviewsData from "../data/reviewsData";
 
 const ProductDetails = () => {
   const { id } = useParams();
+
 
   const product = productsData.find(
     (item) => item.id === Number(id)
@@ -22,6 +25,9 @@ const ProductDetails = () => {
     (item) => item.category === product.category && item.id !== product.id
   )
 
+  const [activeButtons, setActiveButtons] = useState({})
+  const dispatch = useDispatch()
+
   const [mainImage, setMainImage] = useState(product.images[0]);
   const [ActiveButton, setActiveButton] = useState('Specification')
 
@@ -30,6 +36,22 @@ const ProductDetails = () => {
       setMainImage(product.images[0])
     }
   }, [product])
+
+  const add = (data) => {
+    dispatch(addToCart(data));
+
+    setActiveButtons((prev) => ({
+      ...prev,
+      [data.id]: true
+    }));
+
+    setTimeout(() => {
+      setActiveButtons((prev) => ({
+        ...prev,
+        [data.id]: false
+      }));
+    }, 2000);
+  };
 
   return (
     <div className="pd-page">
@@ -88,14 +110,19 @@ const ProductDetails = () => {
               <p className="p-2 border fs-6 text-secondary">Pay Later & Avail Cashback</p>
             </div>
           </div>
-          <button className="pd-cart-btn">Add to cart</button>
+          <div className="text-center pt-3">
+            <button className={`btn mt-auto text-center ${activeButtons[product.id] ? "btn-success" : "btn-danger"}`}
+            onClick={() => add(product)}>
+            {activeButtons[product.id] ? "Added" : "Add to Cart"}
+          </button>
+          </div>
         </div>
 
       </div>
 
       <div className="details-main pt-5">
         <div className="details-btns text-center mb-4">
-          <button type="button" className={`btn btn-outline-danger me-3 text-white ${ActiveButton === 'Specification' ? 'active' : '' }` } onClick={() => setActiveButton('Specification')}>Specification</button>
+          <button type="button" className={`btn btn-outline-danger me-3 text-white ${ActiveButton === 'Specification' ? 'active' : ''}`} onClick={() => setActiveButton('Specification')}>Specification</button>
           <button type="button" className={`btn btn-outline-danger me-3 text-white ${ActiveButton === 'Overview' ? 'active' : ''}`} onClick={() => setActiveButton('Overview')}>Overview</button>
           <button type="button" className={`btn btn-outline-danger me-3 text-white ${ActiveButton === 'Reviews' ? 'active' : ''}`} onClick={() => setActiveButton('Reviews')}>Reviews</button>
         </div>
@@ -178,15 +205,16 @@ const ProductDetails = () => {
                   </Link>
                   <div className="card-body d-flex flex-column">
                     <p className="m-0">
-                        <span style={{ color: "red" }}>
-                          {"⭐".repeat(data.rateCount)}
-                        </span>
+                      <span style={{ color: "red" }}>
+                        {"⭐".repeat(data.rateCount)}
+                      </span>
                     </p>
                     <h5 className="card-title">{data.title}</h5>
                     <p className="card-text border-bottom pb-3">{data.info}</p>
                     <p className="fw-bold text-center"> ₹{data.finalPrice} <del> ₹{data.originalPrice}</del></p>
-                    <button className="btn btn-danger mt-auto">
-                      Add to Cart
+                    <button className={`btn mt-auto ${activeButtons[data.id] ? "btn-success" : "btn-danger"}`}
+                      onClick={() => add(data)}>
+                      {activeButtons[data.id] ? "Added" : "Add to Cart"}
                     </button>
                   </div>
                 </div>

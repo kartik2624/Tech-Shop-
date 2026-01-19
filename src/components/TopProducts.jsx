@@ -11,6 +11,7 @@ import { addToCart } from "../Redux/cartSlide";
 const TopProducts = () => {
     const [userData, setUserData] = useState([]);
     const [category, setCategory] = useState("all")
+    const [activeButtons, setActiveButtons] = useState({})
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -24,9 +25,22 @@ const TopProducts = () => {
                 (item) => item.category.toLowerCase() === category
             );
 
-    const add = (data) =>{
-        dispatch(addToCart(data))
-    }
+    const add = (data) => {
+        dispatch(addToCart(data));
+
+        setActiveButtons((prev) => ({
+            ...prev,
+            [data.id]: true
+        }));
+
+        setTimeout(() => {
+            setActiveButtons((prev) => ({
+                ...prev,
+                [data.id]: false
+            }));
+        }, 2000);
+    };
+
 
 
     return (
@@ -80,8 +94,9 @@ const TopProducts = () => {
                                         <h5 className="card-title">{data.title}</h5>
                                         <p className="card-text border-bottom pb-3">{data.info}</p>
                                         <p className="fw-bold text-center"> ₹{data.finalPrice} <del> ₹{data.originalPrice}</del></p>
-                                        <button className="btn btn-danger mt-auto" onClick={()=>add(data)}>
-                                            Add to Cart
+                                        <button className={`btn mt-auto ${activeButtons[data.id] ? "btn-success" : "btn-danger"}`}
+                                            onClick={() => add(data)}>
+                                            {activeButtons[data.id] ? "Added" : "Add to Cart"}
                                         </button>
                                     </div>
                                 </div>

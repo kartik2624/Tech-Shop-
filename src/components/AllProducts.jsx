@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import productsData from "../data/productsData";
 import { Link } from "react-router-dom";
 import "../stylings/AllProducts.css";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../Redux/cartSlide";
 
 const AllProducts = () => {
   const [brands, setBrands] = useState([]);
@@ -9,6 +11,10 @@ const AllProducts = () => {
   const [sort, setSort] = useState("");
   const [rating, setRating] = useState(0);
   const [maxPrice, setMaxPrice] = useState(20000);
+  const [activeButtons, setActiveButtons] = useState({})
+  const dispatch = useDispatch()
+
+
 
   // BRAND CHECKBOX
   const toggleBrand = (value) => {
@@ -17,6 +23,22 @@ const AllProducts = () => {
         ? prev.filter((b) => b !== value)
         : [...prev, value]
     );
+  };
+
+  const add = (data) => {
+    dispatch(addToCart(data));
+
+    setActiveButtons((prev) => ({
+      ...prev,
+      [data.id]: true
+    }));
+
+    setTimeout(() => {
+      setActiveButtons((prev) => ({
+        ...prev,
+        [data.id]: false
+      }));
+    }, 2000);
   };
 
   // CATEGORY CHECKBOX
@@ -130,38 +152,39 @@ const AllProducts = () => {
       </aside>
 
       {/* PRODUCTS */}
-        <div className="container">
-                <div className="row g-4">
-                    {
-                        filteredData.map((data, i) => (
-                            <div className="col-lg-4 col-md-6 col-sm-12" key={i}>
-                                <div className="card h-100 bg-dark text-white border-white">
-                                    <Link to={`/product/${data.id}`}>
-                                        <img
-                                            src={data.images[0]}
-                                            className="card-img-top"
-                                            alt={data.title}
-                                        />
-                                    </Link>
-                                    <div className="card-body d-flex flex-column">
-                                        <p className="m-0">
-                                            <span style={{ color: "red" }}>
-                                                {"⭐".repeat(data.rateCount)}
-                                            </span></p>
-                                        <h5 className="card-title">{data.title}</h5>
-                                        <p className="card-text border-bottom pb-3">{data.info}</p>
-                                        <p className="fw-bold text-center"> ₹{data.finalPrice} <del> ₹{data.originalPrice}</del></p>
-                                        <button className="btn btn-danger mt-auto">
-                                            Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        ))
-                    }
-                   
-            </div>
+      <div className="container">
+        <div className="row g-4">
+          {
+            filteredData.map((data, i) => (
+              <div className="col-lg-4 col-md-6 col-sm-12" key={i}>
+                <div className="card h-100 bg-dark text-white border-white">
+                  <Link to={`/product/${data.id}`}>
+                    <img
+                      src={data.images[0]}
+                      className="card-img-top"
+                      alt={data.title}
+                    />
+                  </Link>
+                  <div className="card-body d-flex flex-column">
+                    <p className="m-0">
+                      <span style={{ color: "red" }}>
+                        {"⭐".repeat(data.rateCount)}
+                      </span></p>
+                    <h5 className="card-title">{data.title}</h5>
+                    <p className="card-text border-bottom pb-3">{data.info}</p>
+                    <p className="fw-bold text-center"> ₹{data.finalPrice} <del> ₹{data.originalPrice}</del></p>
+                    <button className={`btn mt-auto ${activeButtons[data.id] ? "btn-success" : "btn-danger"}`}
+                      onClick={() => add(data)}>
+                      {activeButtons[data.id] ? "Added" : "Add to Cart"}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+
         </div>
+      </div>
     </div>
   );
 };

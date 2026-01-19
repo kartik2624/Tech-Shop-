@@ -3,9 +3,14 @@ import { IoMdSearch } from "react-icons/io";
 import { IoCartOutline, IoPersonOutline } from "react-icons/io5";
 import '../stylings/navbar.css'
 import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
+
 
 const Navbar = () => {
     const [showSearch, setShowSearch] = useState(false);
+    const cart = useSelector(state => state.cart);
+    const totalProduct = cart.length
+
 
     return (
         <nav className="navbar navbar-expand-lg d-flex navbar-dark bg-dark fixed-top">
@@ -43,7 +48,7 @@ const Navbar = () => {
                     <li className="nav-item">
                         <Link to="/cart" className="nav-link text-white cart-icon" title="Cart">
                             <IoCartOutline size={22} />
-                            <span className="cart-count">0</span>
+                            <span className="cart-count">{totalProduct}</span>
                         </Link>
                     </li>
 
