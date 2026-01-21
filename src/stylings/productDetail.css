@@ -133,3 +133,41 @@
 .person-name{
   align-self: center;
 }
+
+/* Card styling part  */
+.product-card {
+  width: 180px;
+  height: 300px;
+  padding-top: 5px;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;   /* 🔥 IMPORTANT */
+}
+.card-img-top {
+  margin-top: 13px;
+  height: 200px;
+  width: 130px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.card-img-top:hover {
+  transform: scale(1.1);
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  max-height: 36px;
+  overflow: hidden;
+}
+
+.price {
+  margin-top: 8px;
+  font-weight: bold;
+}
+

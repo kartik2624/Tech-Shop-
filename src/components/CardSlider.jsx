@@ -3,12 +3,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
 import "swiper/css";
 import "../stylings/CardSlider.css";
-import productsData from "../data/productsData";
+import ProductsData from "../data/ProductsData";
 import { Link } from "react-router-dom";
 
 const CardSlider = () => {
 
-    const featuredProducts = productsData.filter(
+    const featuredProducts = ProductsData.filter(
         (item) => item.tag === "featured-product"
     );
     return (

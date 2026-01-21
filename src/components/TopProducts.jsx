@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import productsData from "../data/productsData";
+import ProductsData from "../data/ProductsData";
 import { Link } from "react-router-dom";
 import "../stylings/navbar.css";
 import { categoryMenu } from "../data/filterBarData";
@@ -15,7 +15,7 @@ const TopProducts = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        setUserData(productsData);
+        setUserData(ProductsData);
     }, []);
 
     const filterData =
@@ -89,7 +89,7 @@ const TopProducts = () => {
                                     <div className="card-body d-flex flex-column">
                                         <p className="m-0">
                                             <span style={{ color: "red" }}>
-                                                {"⭐".repeat(data.rateCount)}
+                                                {"★".repeat(data.rateCount)}
                                             </span></p>
                                         <h5 className="card-title">{data.title}</h5>
                                         <p className="card-text border-bottom pb-3">{data.info}</p>

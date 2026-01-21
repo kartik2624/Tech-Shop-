@@ -1,0 +1,171 @@
+/* FULL SCREEN OVERLAY */
+.login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* COMMON FORM STYLE */
+.form,
+.form2 {
+  background-color: #000;
+  color: #fff;
+  width: 420px;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+  /* simple soft shadow */
+}
+
+/* LOGIN FORM */
+.form {
+  min-height: 430px;
+  padding: 35px 35px 30px;
+  position: relative;
+}
+
+/* SIGNUP FORM (MORE TOP SPACE) */
+.form2 {
+  min-height: 500px;
+  padding: 70px 35px 30px;
+  /* EXTRA TOP SPACE */
+  position: relative;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+  border: none;
+  background: none;
+  font-size: 22px;
+  color: white;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: red;
+}
+
+.close-btn2 {
+  position: absolute;
+  top: 66px;
+  right: -5px;
+  border: none;
+  background: none;
+  font-size: 22px;
+  color: white;
+  cursor: pointer;
+}
+
+.close-btn2:hover {
+  color: red;
+}
+
+/* INPUT AREA */
+.inputs {
+  margin-top: 18px;
+}
+
+.inputs input {
+  width: 100%;
+  background-color: #111;
+  color: white;
+  border: none;
+  /* BORDER REMOVED */
+  border-radius: 6px;
+  margin: 12px 0;
+  height: 44px;
+  font-size: 16px;
+  padding-left: 12px;
+}
+
+.inputs input:focus {
+  outline: none;
+  background-color: #1a1a1a;
+}
+
+/* MAIN BUTTON */
+.inputs button {
+  width: 100%;
+  height: 45px;
+  font-size: 17px;
+  margin-top: 18px;
+  background-color: rgb(255, 8, 0);
+  color: white;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.inputs button:hover {
+  background-color: darkred;
+}
+
+/* SOCIAL BUTTONS */
+.social-link {
+  padding: 15px 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.Facebook,
+.Google,
+.Twitter {
+  height: 40px;
+  width: 100px;
+  margin: 8px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.Facebook {
+  background-color: #3b5998;
+}
+
+.Google {
+  background-color: #db4437;
+}
+
+.Twitter {
+  background-color: #1da1f2;
+}
+
+/* OR DIVIDER */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 18px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #444;
+}
+
+.divider::before {
+  margin-right: 10px;
+}
+
+.divider::after {
+  margin-left: 10px;
+}
+
+.divider span {
+  font-size: 13px;
+  color: #aaa;
+}

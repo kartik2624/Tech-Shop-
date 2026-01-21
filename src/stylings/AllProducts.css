@@ -13,6 +13,8 @@ body {
 .shop-wrapper {
   display: flex;
   min-height: 100vh;
+  padding-top: 50px;
+  padding-bottom: 50px;
   background: linear-gradient(#111, #000);
 }
 
@@ -22,10 +24,10 @@ body {
   padding: 18px 18px 40px;
   background: #0f0f0f;
   border-right: 1px solid #2a2a2a;
-  height: 100vh;
+  height: 400px;
   overflow-y: auto;
   position: sticky;
-  top: 0;
+  top: 50px;
 }
 
 /* SCROLLBAR */
@@ -97,6 +99,7 @@ body {
   font-size: 14px;
   margin-bottom: 6px;
   display: block;
+  color: white;
 }
 
 /* SLIDER */
@@ -111,95 +114,34 @@ body {
   padding: 30px 35px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 22px;
+  gap: 7px;
 }
 
 /* ================= CARD ================= */
-.product-card {
-  background: linear-gradient(#141414, #0b0b0b);
-  border: 1px solid #2a2a2a;
-  padding: 16px;
-  transition: all 0.3s ease;
-}
-
-.product-card:hover {
-  border-color: #444;
-  transform: translateY(-2px);
-}
-
-/* IMAGE */
-.product-card img {
-  width: 100%;
-  height: 230px;
-  object-fit: contain;
-  margin-bottom: 10px;
-}
-
-/* STARS */
-.stars {
-  color: #c40000;
-  font-size: 14px;
-  margin-bottom: 6px;
-}
-
-/* TITLE */
-.product-card h3 {
-  font-size: 16px;
-  font-weight: 600;
-  margin: 6px 0 2px;
-  color: #e5e5e5;
-}
-
-/* INFO */
-.product-card p {
-  font-size: 13px;
-  color: #9a9a9a;
-  margin-bottom: 12px;
-}
-
-/* PRICE */
-.price {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.price del {
-  font-size: 14px;
-  color: #777;
-  margin-left: 8px;
-}
-
-/* BUTTON */
-.product-card button {
-  width: 100%;
-  padding: 10px;
-  background: #c40000;
-  color: #fff;
-  border: none;
-  font-size: 14px;
-  cursor: pointer;
-}
-
 .product-card button:hover {
   background: #e00000;
 }
 .product-card {
   width: 180px;
   height: 300px;
+  padding-top: 5px;
   border-radius: 12px;
   padding: 15px;
   text-align: center;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;   /* 🔥 IMPORTANT */
 }
-.product-card img {
-  width: 150px;
-  height: 130px;
+.card-img-top {
+  margin-top: 13px;
+  height: 200px;
+  width: 130px;
   object-fit: contain;
-  margin: 10px auto;
+  transition: transform 0.3s ease;
+}
+
+.card-img-top:hover {
+  transform: scale(1.1);
 }
 
 .title {

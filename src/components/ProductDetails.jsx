@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import productsData from "../data/productsData";
+import ProductsData from "../data/ProductsData";
 import "../stylings/productDetail.css";
 import { FaCheck } from "react-icons/fa6";
 import { IoPersonCircleOutline } from "react-icons/io5";
@@ -16,12 +16,12 @@ const ProductDetails = () => {
   const { id } = useParams();
 
 
-  const product = productsData.find(
+  const product = ProductsData.find(
     (item) => item.id === Number(id)
   );
 
   // filtering related products data
-  const relatedProduct = productsData.filter(
+  const relatedProduct = ProductsData.filter(
     (item) => item.category === product.category && item.id !== product.id
   )
 
@@ -81,7 +81,10 @@ const ProductDetails = () => {
           <p className="pd-info">{product.info}</p>
 
           <div className="pd-rating text-danger border-bottom pb-4">
-            ⭐⭐⭐⭐ | <span className="text-secondory">({product.ratings} Ratings)</span>
+            <p className="m-0">
+              <span style={{ color: "red" }}>
+                {"★".repeat(product.rateCount)}
+              </span></p> | <span className="text-secondory">({product.ratings} Ratings)</span>
           </div>
 
           <div className="price-cont1 pb-3 border-bottom">
@@ -112,9 +115,9 @@ const ProductDetails = () => {
           </div>
           <div className="text-center pt-3">
             <button className={`btn mt-auto text-center ${activeButtons[product.id] ? "btn-success" : "btn-danger"}`}
-            onClick={() => add(product)}>
-            {activeButtons[product.id] ? "Added" : "Add to Cart"}
-          </button>
+              onClick={() => add(product)}>
+              {activeButtons[product.id] ? "Added" : "Add to Cart"}
+            </button>
           </div>
         </div>
 
@@ -176,7 +179,7 @@ const ProductDetails = () => {
                       <p className="m-0">{review.name}</p>
                       <p className="m-0">
                         <span style={{ color: "red" }}>
-                          {"⭐".repeat(review.rateCount)}
+                          {"★".repeat(review.rateCount)}
                         </span> | <span className="text-secondary">{review.date}</span></p>
                     </div>
                   </div>
@@ -206,7 +209,7 @@ const ProductDetails = () => {
                   <div className="card-body d-flex flex-column">
                     <p className="m-0">
                       <span style={{ color: "red" }}>
-                        {"⭐".repeat(data.rateCount)}
+                        {"★".repeat(data.rateCount)}
                       </span>
                     </p>
                     <h5 className="card-title">{data.title}</h5>

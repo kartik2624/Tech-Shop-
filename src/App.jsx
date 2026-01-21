@@ -17,9 +17,6 @@ function App() {
   return (
     <>
       <Navbar />
-      {/* <ImageSlider />
-      <CardSlider /> */}
-      {/* <TopProducts /> */}
       <ScrollToTop />
       <Routing />
       <Advantages />

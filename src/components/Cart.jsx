@@ -41,7 +41,9 @@ const Cart = () => {
               <div className='product-info'>
                 <div className='d-flex justify-content-between'>
                   <p className='product-title'>{product.title} {product.info} </p>
-                  <button className='btn delete-button' onClick={() => dispatch(removeFromCart(product.id))}><RiDeleteBinLine className='text-white delete-icon' /></button>
+                  <button className='btn delete-button' title='Remove from list' onClick={() => dispatch(removeFromCart(product.id))}><RiDeleteBinLine size={20
+                    
+                  } className='text-white delete-icon' /></button>
                 </div>
 
                 <p className='product-price'>
@@ -76,7 +78,7 @@ const Cart = () => {
       {data.length > 0 && (
         <div className='order-box bg-dark text-white'>
 
-          <p className='order-title'>
+          <p className='order-title fs-4'>
             Order Summary (<span>{data.length} items</span>)
           </p>
 

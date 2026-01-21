@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import productsData from "../data/productsData";
+import ProductsData from "../data/ProductsData";
 import { Link } from "react-router-dom";
 import "../stylings/AllProducts.css";
 import { useDispatch } from "react-redux";
@@ -8,8 +8,7 @@ import { addToCart } from "../Redux/cartSlide";
 const AllProducts = () => {
   const [brands, setBrands] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [sort, setSort] = useState("");
-  const [rating, setRating] = useState(0);
+  const [sortBy, setSortBy] = useState("");
   const [maxPrice, setMaxPrice] = useState(20000);
   const [activeButtons, setActiveButtons] = useState({})
   const dispatch = useDispatch()
@@ -54,13 +53,19 @@ const AllProducts = () => {
   const clearFilters = () => {
     setBrands([]);
     setCategories([]);
-    setSort("");
-    setRating(0);
+    setSortBy("");
     setMaxPrice(20000);
   };
 
+  const isFilterActive =
+    brands.length > 0 ||
+    categories.length > 0 ||
+    sortBy !== "" ||
+    maxPrice !== 20000;
+
+
   // FILTER LOGIC
-  let filteredData = [...productsData];
+  let filteredData = [...ProductsData];
 
   if (brands.length > 0) {
     filteredData = filteredData.filter((p) =>
@@ -74,35 +79,53 @@ const AllProducts = () => {
     );
   }
 
-  if (rating > 0) {
-    filteredData = filteredData.filter(
-      (p) => p.rateCount === rating
-    );
-  }
-
   filteredData = filteredData.filter(
     (p) => p.finalPrice <= maxPrice
   );
 
-  if (sort === "low") {
+  if (sortBy === "low") {
     filteredData.sort((a, b) => a.finalPrice - b.finalPrice);
   }
 
-  if (sort === "high") {
+  if (sortBy === "high") {
     filteredData.sort((a, b) => b.finalPrice - a.finalPrice);
+  }
+
+  if (sortBy === "latest") {
+    filteredData.sort((a, b) => b.id - a.id);
+  }
+
+  if (sortBy === "rating") {
+    filteredData = filteredData.filter(
+      (p) => p.rateCount === 5
+    );
+  }
+
+
+  if (sortBy === "featured") {
+    filteredData = filteredData.filter(
+      (p) => p.tag === "featured-product"
+    );
   }
 
   return (
     <div className="shop-wrapper">
       {/* SIDEBAR */}
       <aside className="sidebar">
-        <button className="clear-btn" onClick={clearFilters}>
-          Clear Filters
-        </button>
+        {isFilterActive && (
+          <button className="clear-btn" onClick={clearFilters}>
+            Clear Filters
+          </button>
+        )}
 
-        <h4>Sort By</h4>
-        <p onClick={() => setSort("low")}>Price (Lowest First)</p>
-        <p onClick={() => setSort("high")}>Price (Highest First)</p>
+
+        <h4 >Sort By</h4>
+        <p onClick={() => setSortBy("latest")}>Latest</p>
+        <p onClick={() => setSortBy("featured")}>Featured</p>
+        <p onClick={() => setSortBy("rating")}>Top Rated</p>
+        <p onClick={() => setSortBy("low")}>Price (Lowest First)</p>
+        <p onClick={() => setSortBy("high")}>Price (Highest First)</p>
+
 
         <h4>Filter By</h4>
 
@@ -118,7 +141,7 @@ const AllProducts = () => {
           </label>
         ))}
 
-        <h5>Category</h5>
+        <h5 className="border-bottom border-secondary pb-2 text-white fs-6">Category</h5>
         {["Headphones", "Earbuds", "Earphones", "Neckbands"].map(
           (c) => (
             <label key={c}>
@@ -131,19 +154,12 @@ const AllProducts = () => {
             </label>
           )
         )}
-
-        <h5>Rating</h5>
-        <p onClick={() => setRating(5)}>5 ⭐ </p>
-        <p onClick={() => setRating(4)}>4 ⭐ </p>
-        <p onClick={() => setRating(3)}>3 ⭐ </p>
-
-
-        <h5>Price</h5>
+        <h5 className="border-bottom border-secondary pb-2 text-white fs-6">Price</h5>
         <span className="price-value">₹{maxPrice}</span>
         <input
           type="range"
           min="499"
-          max="20000"
+          max="19990"
           step="0"
           value={maxPrice}
           onChange={(e) => setMaxPrice(+e.target.value)}
@@ -156,7 +172,7 @@ const AllProducts = () => {
         <div className="row g-4">
           {
             filteredData.map((data, i) => (
-              <div className="col-lg-4 col-md-6 col-sm-12" key={i}>
+              <div className="col-lg-3 col-md-4 col-sm-6" key={i}>
                 <div className="card h-100 bg-dark text-white border-white">
                   <Link to={`/product/${data.id}`}>
                     <img
@@ -168,7 +184,7 @@ const AllProducts = () => {
                   <div className="card-body d-flex flex-column">
                     <p className="m-0">
                       <span style={{ color: "red" }}>
-                        {"⭐".repeat(data.rateCount)}
+                        {"★".repeat(data.rateCount)}
                       </span></p>
                     <h5 className="card-title">{data.title}</h5>
                     <p className="card-text border-bottom pb-3">{data.info}</p>

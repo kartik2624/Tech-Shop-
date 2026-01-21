@@ -1,7 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
-import productsData from "../data/productsData";
+import ProductsData from "../data/ProductsData";
 import "../stylings/ImageSlide.css";
 import { Link } from "react-router-dom";
 
@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 const HeroSlider = () => {
 
     // 🔥 only hero products
-    const heroProducts = productsData.filter(
+    const heroProducts = ProductsData.filter(
         (item) => item.tag === "hero-product"
     );
 
