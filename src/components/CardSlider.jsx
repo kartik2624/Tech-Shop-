@@ -13,15 +13,16 @@ const CardSlider = () => {
     );
     return (
         <div className="bg-dark slider-container">
-            <p className="featured-products text-white">
+            <p className="featured-products text-white pb-3 fst-italic fw-bold">
                 Featured Products
             </p>
             <Swiper
                 modules={[Autoplay, FreeMode]}
-                slidesPerView={4}
-                spaceBetween={20}
+                slidesPerView={5}
+                spaceBetween={25}
+                centeredSlides={true}
                 loop={true}
-                speed={6000}
+                speed={2500}
 
                 freeMode={{
                     enabled: true,
@@ -38,6 +39,21 @@ const CardSlider = () => {
                 className="product-swiper"
             >
 
+                {featuredProducts.map((product) => (
+                    <SwiperSlide key={product.id}>
+                        <div className="product-card text-white bg-dark">
+                            <p className="title">{product.title}</p>
+                            <Link to={`/product/${product.id}`}>
+                                <img src={product.images[0]} alt={product.title} />
+                            </Link>
+
+                            <p className="price">
+                                ₹{product.finalPrice}
+                                <del> ₹{product.originalPrice}</del>
+                            </p>
+                        </div>
+                    </SwiperSlide>
+                ))}
                 {featuredProducts.map((product) => (
                     <SwiperSlide key={product.id}>
                         <div className="product-card text-white bg-dark">

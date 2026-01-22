@@ -45,10 +45,10 @@ const TopProducts = () => {
 
     return (
         <div className="bg-dark">
-            <h3 className="text-white text-center m-0 p-4">Top Products</h3>
+            <h3 className="text-white text-center m-0 p-4 fst-italic fw-bold">Top Products</h3>
 
             {/* Filter Buttons */}
-            <div className="products-btns text-center mb-4">
+            <div className="products-btns text-center mb-4 d-flex flex-wrap">
 
                 {/* ALL button */}
                 <button

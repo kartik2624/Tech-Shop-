@@ -39,7 +39,7 @@ const HeroSlider = () => {
             }}
           >
                     <div className="hero-overlay">
-                        <p className="brand">{product.brand}</p>
+                        <p className="brand">{product.title}</p>
 
                         <h3>
                             {product.tagline}

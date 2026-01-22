@@ -65,3 +65,93 @@
   background: red;
   opacity: 1;
 }
+
+
+/* RESPONSIVE HERO SLIDER */
+
+
+/* Tablet (max-width: 992px) */
+@media (max-width: 992px) {
+
+  .hero-swiper {
+    height: 400px;
+  }
+
+  .hero-slide {
+    background-position: center right;
+    background-size: contain;
+  }
+
+  .hero-overlay {
+    padding-left: 40px;
+    max-width: 420px;
+  }
+
+  .hero-overlay h3{
+    font-size: 30px;
+  }
+
+  .hero-overlay .price {
+    font-size: 16px;
+  }
+}
+
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+
+  .hero-swiper {
+    height: 320px;
+  }
+
+  .hero-slide {
+    background-position: center;
+    background-size: contain;
+    align-items: flex-end;
+  }
+
+  .hero-overlay {
+    padding: 20px;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero-overlay .brand {
+    font-size: 12px;
+  }
+
+  .hero-overlay h3 {
+    font-size: 24px;
+  }
+
+  .hero-overlay .price {
+    font-size: 15px;
+  }
+}
+
+
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+
+  .hero-swiper {
+    height: 260px;
+  }
+
+  .hero-overlay {
+    padding: 15px;
+  }
+
+  .hero-overlay h3 {
+    font-size: 20px;
+  }
+
+  .hero-overlay .price {
+    font-size: 14px;
+  }
+
+  .hero-overlay button {
+    padding: 6px 14px;
+    font-size: 14px;
+  }
+}
+

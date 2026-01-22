@@ -124,10 +124,10 @@ const ProductDetails = () => {
       </div>
 
       <div className="details-main pt-5">
-        <div className="details-btns text-center mb-4">
-          <button type="button" className={`btn btn-outline-danger me-3 text-white ${ActiveButton === 'Specification' ? 'active' : ''}`} onClick={() => setActiveButton('Specification')}>Specification</button>
-          <button type="button" className={`btn btn-outline-danger me-3 text-white ${ActiveButton === 'Overview' ? 'active' : ''}`} onClick={() => setActiveButton('Overview')}>Overview</button>
-          <button type="button" className={`btn btn-outline-danger me-3 text-white ${ActiveButton === 'Reviews' ? 'active' : ''}`} onClick={() => setActiveButton('Reviews')}>Reviews</button>
+        <div className="details-btns text-center d-flex flex-wrap justify-content-center mb-4">
+          <button type="button" className={`btn btn-outline-danger me-3 mt-3 text-white ${ActiveButton === 'Specification' ? 'active' : ''}`} onClick={() => setActiveButton('Specification')}>Specification</button>
+          <button type="button" className={`btn btn-outline-danger me-3 mt-3 text-white ${ActiveButton === 'Overview' ? 'active' : ''}`} onClick={() => setActiveButton('Overview')}>Overview</button>
+          <button type="button" className={`btn btn-outline-danger me-3 mt-3 text-white ${ActiveButton === 'Reviews' ? 'active' : ''}`} onClick={() => setActiveButton('Reviews')}>Reviews</button>
         </div>
         {
           ActiveButton === "Specification" && (
@@ -192,7 +192,7 @@ const ProductDetails = () => {
       </div>
       {/* Related products */}
       <div className="container">
-        <p className="text-center fw-bold fs-4 mt-5 mb-5">Related Products</p>
+        <p className="text-center fw-bold fs-4 mt-5 mb-5 fst-italic">Related Products</p>
         <div className="row g-4">
           {
             relatedProduct.map((data, i) => (

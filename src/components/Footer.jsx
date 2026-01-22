@@ -11,7 +11,7 @@ const Footer = () => {
 
         {/* BRAND */}
         <div className="footer-brand">
-          <h2>Tech-Shop</h2>
+          <h2 className='fw-bold fs-4 fst-italic'>Tech-Shop</h2>
           <p>
             Subscribe to our email alerts to receive early discount offers
             and new product information.

@@ -198,6 +198,34 @@ body{
 
 }
 
+.search-results {
+  position: absolute;
+  top: 60px;
+  background: #111;
+  width: 250px;
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: 6px;
+  z-index: 999;
+}
+
+.search-item {
+  display: block;
+  padding: 8px 12px;
+  color: white;
+  text-decoration: none;
+}
+
+.search-item:hover {
+  background: #333;
+}
+
+.no-result {
+  color: gray;
+  padding: 10px;
+}
+
+
 
 
 

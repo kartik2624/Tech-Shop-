@@ -164,3 +164,101 @@ body {
   justify-content: center;
   gap: 19px;
 }
+
+@media (max-width: 992px) {
+
+  .sidebar {
+    width: 230px;
+    padding: 14px;
+  }
+
+  .sidebar h4 {
+    font-size: 14px;
+  }
+
+  .sidebar h5 {
+    font-size: 13px;
+  }
+
+  .sidebar p,
+  .sidebar label {
+    font-size: 13px;
+  }
+
+  .products {
+    padding: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  }
+
+  .card-img-top {
+    width: 120px;
+    height: 180px;
+  }
+}
+@media (max-width: 576px) {
+
+  .sidebar {
+    width: 200px;
+    padding: 12px;
+  }
+
+  .sidebar h4 {
+    font-size: 13px;
+  }
+
+  .sidebar p,
+  .sidebar label {
+    font-size: 12px;
+  }
+
+  .price-value {
+    font-size: 12px;
+  }
+
+  .products {
+    padding: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+
+  .card-img-top {
+    width: 100px;
+    height: 150px;
+  }
+
+  .card-title {
+    font-size: 14px;
+  }
+
+}
+@media (max-width: 400px) {
+
+  .sidebar {
+    width: 180px;
+  }
+
+  .sidebar h4,
+  .sidebar h5 {
+    font-size: 12px;
+  }
+
+  .sidebar p,
+  .sidebar label {
+    font-size: 11px;
+  }
+
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .card-img-top {
+    width: 90px;
+    height: 130px;
+  }
+
+  .card-title {
+    font-size: 13px;
+  }
+
+}
+
